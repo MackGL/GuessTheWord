@@ -1,16 +1,34 @@
-#GuessTheWord
-
 import random
 
-#opens the words txt and reads it. Splitlines creates strings based on the breaks of each thing
-with open("Words.txt") as w:
-    word_list = w.read().splitlines()
+with open("words.txt","r") as file:
+    contents = file.read()
+    words = contents.split()
+    randomWord = random.choice(words)
+def word_displayed(randomWord, letters_guessed):
+    word_displayed = ""
+    for letter in randomWord:
+        if letter in letters_guessed:
+            word_displayed += letter
+        else:
+            word_displayed += "_"
+    return word_displayed
 
-random_number = random.randint(0, len(word_list)-1)
-wordchoice = word_list[random_number]
-def GetWord(word):
-    return 0
+def game():
+    word = randomWord
+    guesses = 4
+    letters_gussed = []
+
+    print("Welcome To Guess The Word!")
+
+    while guesses > 0:
+        print(word_displayed(randomWord, letters_gussed))
+        guess = input("Guess a letter or a word: ")
+
+        if not guess.isalpha():
+            print("————————————————————————————")
+            print("That's not a letter or word.")
 
 
 
+game()
 
