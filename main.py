@@ -1,10 +1,16 @@
 import random
 import sys
 
-with open("words.txt","r") as file:
-    contents = file.read()
-    words = contents.split()
-    randomWord = random.choice(words)
+words = ["angel", "judgmemt", "department", "corner", "powder", "ditch", "count", "notebook", "profile", "accent", "witch",
+         "courtship", "grave", "central", "sticky", "unfair", "impact", "intensify", "budge", "light",
+         "supercalifragilisticexpialidocious"]
+random.shuffle(words)
+randomWord = random.choice(words)
+
+#with open("words.txt","r") as file:
+    #contents = file.read()
+    #words = contents.split()
+    #randomWord = random.choice(words)
 
 def word_displayed(randomWord, letters_guessed):
     display = ''
@@ -16,8 +22,9 @@ def word_displayed(randomWord, letters_guessed):
     return display
 
 def game():
+    random.shuffle(words)
     word = randomWord
-    guesses = 4
+    guesses = 6
     letters_guessed = []
 
     #welcomes the user
@@ -60,7 +67,7 @@ def game():
             print("Congratulations, you won!")
             restart = input("Would you like to play again? (Enter yes or no): ")
             if restart == "yes":
-                print(word_displayed(randomWord, letters_guessed))
+                print(randomWord)
                 game()
             elif restart == "no":
                 quit("You quite the game.")
