@@ -58,9 +58,6 @@ def game():
             print("Congratulations, you won!")
             break
 
-    if all(guesses in word in letters_guessed):
-        print("Congratulation, you won!")
-
     if guesses == 0:
         print("————————————————————————————")
         print("Game Over. You Lost. The word was:", word)
