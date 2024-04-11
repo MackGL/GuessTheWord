@@ -1,4 +1,5 @@
 import random
+import sys
 
 with open("words.txt","r") as file:
     contents = file.read()
@@ -20,6 +21,7 @@ def game():
     letters_guessed = []
 
     #welcomes the user
+    print("————————————————————————————")
     print("Welcome To Guess The Word!")
     print("Guess a letter you think could be in the word below.", end = " ")
     print("You have 4 guesses left.")
@@ -56,7 +58,15 @@ def game():
 
         if all(letter in letters_guessed for letter in word):
             print("Congratulations, you won!")
-            break
+            restart = input("Would you like to play again? (Enter yes or no): ")
+            if restart == "yes":
+                print(word_displayed(randomWord, letters_guessed))
+                game()
+            elif restart == "no":
+                quit("You quite the game.")
+
+
+
 
     if guesses == 0:
         print("————————————————————————————")
