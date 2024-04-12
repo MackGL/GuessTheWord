@@ -1,10 +1,11 @@
 import random
 import sys
 
-words = ["angel", "judgmemt", "department", "corner", "powder", "ditch", "count", "notebook", "profile", "accent", "witch",
-         "courtship", "grave", "central", "sticky", "unfair", "impact", "intensify", "budge", "light",
+#words = ["grave", "bot"]
+
+words = ["bathtub", "reproduction", "department", "corner", "chorus", "temperature", "count", "notebook", "profile", "determine", "listen",
+         "arrogant", "motorcycle", "central", "software", "public", "impact", "intensify", "disappointment", "light",
          "supercalifragilisticexpialidocious"]
-random.shuffle(words)
 randomWord = random.choice(words)
 
 #with open("words.txt","r") as file:
@@ -22,16 +23,16 @@ def word_displayed(randomWord, letters_guessed):
     return display
 
 def game():
-    random.shuffle(words)
     word = randomWord
     guesses = 6
     letters_guessed = []
+    wrong_letters = []
 
     #welcomes the user
     print("————————————————————————————")
     print("Welcome To Guess The Word!")
     print("Guess a letter you think could be in the word below.", end = " ")
-    print("You have 4 guesses left.")
+    print("You have 6 guesses left.")
 
     #allows the player to input a letter, and displays word
     while guesses > 0:
@@ -42,12 +43,11 @@ def game():
         if not guess.isalpha():
             print("————————————————————————————")
             print("That's not a letter. (You cannot enter words, numbers, or special characters)")
-        else:
+        elif guess.isalpha():
             #stops letter repeats in letter_guessed
             if guess in letters_guessed:
                 print("————————————————————————————")
                 print("You have already guessed that letter.")
-                guesses += 1
             #puts letter guessed in letters_guessed list
             else:
                 print("————————————————————————————")
@@ -58,26 +58,19 @@ def game():
             if guess in word:
                 print("You have ", guesses, " guesses left.")
                 #subtracts guess when answer is wrong
-            elif guess not in word:
+            elif guess not in word and not wrong_letters:
                 guesses -= 1
                 print("Incorrect Guess.", end= ' ')
                 print("You have", guesses, "guesses left.")
+                wrong_letters.append(guess)
 
         if all(letter in letters_guessed for letter in word):
             print("Congratulations, you won!")
-            restart = input("Would you like to play again? (Enter yes or no): ")
-            if restart == "yes":
-                print(randomWord)
-                game()
-            elif restart == "no":
-                quit("You quite the game.")
-
-
+            break
 
 
     if guesses == 0:
         print("————————————————————————————")
         print("Game Over. You Lost. The word was:", word)
-
 
 game()
