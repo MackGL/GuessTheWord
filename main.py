@@ -69,6 +69,7 @@ def game():
             break
 
 
+
     if guesses == 0:
         print("————————————————————————————")
         print("Game Over. You Lost. The word was:", word)
