@@ -1,11 +1,11 @@
 import random
 import sys
 
-#words = ["grave", "bot"]
+words = ["grave", "bot"]
 
-words = ["bathtub", "reproduction", "department", "corner", "chorus", "temperature", "count", "notebook", "profile", "determine", "listen",
-         "arrogant", "motorcycle", "central", "software", "public", "impact", "intensify", "disappointment", "light",
-         "supercalifragilisticexpialidocious"]
+#words = ["bathtub", "reproduction", "department", "corner", "chorus", "temperature", "count", "notebook", "profile", "determine", "listen",
+         #"arrogant", "motorcycle", "central", "software", "public", "impact", "intensify", "disappointment", "light",
+         #"supercalifragilisticexpialidocious"]
 randomWord = random.choice(words)
 
 #with open("words.txt","r") as file:
@@ -26,7 +26,6 @@ def game():
     word = randomWord
     guesses = 6
     letters_guessed = []
-    wrong_letters = []
 
     #welcomes the user
     print("————————————————————————————")
@@ -53,16 +52,14 @@ def game():
                 print("————————————————————————————")
                 letters_guessed.append(guess)
                 print("Letters guessed: ", letters_guessed)
-
                 #displays number of guesses left
-            if guess in word:
-                print("You have ", guesses, " guesses left.")
-                #subtracts guess when answer is wrong
-            elif guess not in word and not wrong_letters:
-                guesses -= 1
-                print("Incorrect Guess.", end= ' ')
-                print("You have", guesses, "guesses left.")
-                wrong_letters.append(guess)
+                if guess not in word:
+                    guesses -= 1
+                    print("Incorrect Guess.", end= ' ')
+                    print("You have", guesses, "guesses left.")
+                elif guess in word:
+                    print("You have ", guesses, " guesses left.")
+                    #subtracts guess when answer is wrong
 
         if all(letter in letters_guessed for letter in word):
             print("Congratulations, you won!")
