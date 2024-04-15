@@ -1,11 +1,10 @@
 import random
 import sys
 
-words = ["grave", "bot"]
 
-#words = ["bathtub", "reproduction", "department", "corner", "chorus", "temperature", "count", "notebook", "profile", "determine", "listen",
-         #"arrogant", "motorcycle", "central", "software", "public", "impact", "intensify", "disappointment", "light",
-         #"supercalifragilisticexpialidocious"]
+words = ["bathtub", "reproduction", "department", "corner", "chorus", "temperature", "count", "notebook", "profile", "determine", "listen",
+         "arrogant", "motorcycle", "central", "software", "public", "impact", "intensify", "disappointment", "light",
+         "supercalifragilisticexpialidocious", "active", "comment", "customer" "participate", "brainstorm", "reason", "auction", "tournament"]
 randomWord = random.choice(words)
 
 #with open("words.txt","r") as file:
